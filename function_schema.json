@@ -1,0 +1,93 @@
+{
+    "handle_excel_schema" : {
+        "type": "function",
+        "function": {
+            "name": "handle_excel",
+            "description": "处理Excel文件，绘制指定科目的成绩分布饼图\n",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "excel_path": {
+                        "type": "string",
+                        "description": "需要打开并处理的Excel文件路径"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "需要绘制饼状图的科目名称"
+                    },
+                    "save_path": {
+                        "type": "string",
+                        "description": "保存路径，默认为None，表示不保存"
+                    }
+                },
+                "required": ["excel_path", "subject"]
+            }
+        }
+    },
+    "get_weather_schema": {
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "获取指定城市实时的天气信息\n",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "city_name": {
+                        "type": "string",
+                        "description": "需要查询天气的城市名称"
+                    }
+                },
+                "required": ["city_name"]
+            }
+        }
+    },
+    "write_file_schema" : {
+        "type": "function",
+        "function": {
+            "name": "write_file",
+            "description": "将用户需要的完整代码内容编写进指定的文件中\n",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "type": "string",
+                        "description": "生成的python文件名, 用户没有指定时为generated.py"
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "需要写入的完整的代码内容"
+                    }
+                },
+                "required": ["filename", "code"]
+            }
+        }
+    },
+    "call_function_schema" : {
+        "type": "function",
+        "function": {
+            "name": "call_function",
+            "description": "调用指定 Python 文件中的函数",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "type": "string",
+                        "description": "调用的函数所在的文件名，与generate_file配合使用时都是generated.py"
+                    },
+                    "function_name": {
+                        "type": "string",
+                        "description": "要调用的函数名"
+                    },
+                    "param_list": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "传入函数的参数列表"
+                    }
+                },
+                "required": ["filename", "function_name", "param_list"]
+            }
+        }
+    }
+}
